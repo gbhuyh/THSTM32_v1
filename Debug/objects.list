@@ -2,6 +2,6 @@
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Startup/startup_stm32f401retx.o"
-"./drivers/src/kalman_filter.o"
+"./drivers/kalman_filter/kalman_filter.o"
 "./drivers/src/stm32f401re_gpio.o"
 "./drivers/src/stm32f401re_rcc.o"

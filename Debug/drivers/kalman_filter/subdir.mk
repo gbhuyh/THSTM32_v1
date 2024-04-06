@@ -5,26 +5,23 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../drivers/src/stm32f401re_gpio.c \
-../drivers/src/stm32f401re_rcc.c 
+../drivers/kalman_filter/kalman_filter.c 
 
 OBJS += \
-./drivers/src/stm32f401re_gpio.o \
-./drivers/src/stm32f401re_rcc.o 
+./drivers/kalman_filter/kalman_filter.o 
 
 C_DEPS += \
-./drivers/src/stm32f401re_gpio.d \
-./drivers/src/stm32f401re_rcc.d 
+./drivers/kalman_filter/kalman_filter.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-drivers/src/%.o drivers/src/%.su drivers/src/%.cyclo: ../drivers/src/%.c drivers/src/subdir.mk
+drivers/kalman_filter/%.o drivers/kalman_filter/%.su drivers/kalman_filter/%.cyclo: ../drivers/kalman_filter/%.c drivers/kalman_filter/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DNUCLEO_F401RE -DSTM32 -DSTM32F401RETx -DSTM32F4 -c -I"E:/STM32/version2/drivers/CMSIS/CMSIS/Include" -I"E:/STM32/version2/drivers/kalman_filter" -I"E:/STM32/version2/Src" -I"E:/STM32/version2/drivers/inc/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
-clean: clean-drivers-2f-src
+clean: clean-drivers-2f-kalman_filter
 
-clean-drivers-2f-src:
-	-$(RM) ./drivers/src/stm32f401re_gpio.cyclo ./drivers/src/stm32f401re_gpio.d ./drivers/src/stm32f401re_gpio.o ./drivers/src/stm32f401re_gpio.su ./drivers/src/stm32f401re_rcc.cyclo ./drivers/src/stm32f401re_rcc.d ./drivers/src/stm32f401re_rcc.o ./drivers/src/stm32f401re_rcc.su
+clean-drivers-2f-kalman_filter:
+	-$(RM) ./drivers/kalman_filter/kalman_filter.cyclo ./drivers/kalman_filter/kalman_filter.d ./drivers/kalman_filter/kalman_filter.o ./drivers/kalman_filter/kalman_filter.su
 
-.PHONY: clean-drivers-2f-src
+.PHONY: clean-drivers-2f-kalman_filter
 
